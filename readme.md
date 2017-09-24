@@ -1,0 +1,1 @@
+Pure javascript copy to clipboard function. 
