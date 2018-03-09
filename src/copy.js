@@ -5,22 +5,22 @@
 		var parent = document.body;
 		var isRTL = document.documentElement.getAttribute('dir') === 'rtl';
 
-		var input = document.createElement('input');
-		input.style.position = 'absolute';
-		input.style[isRTL ? 'right' : 'left'] = '-9999px';
-		input.style.opacity = 0;
-		input.value = text;
-		input.setAttribute('readonly', 'true');
+		var el = document.createElement('textarea');
+		el.style.position = 'fixed';
+		el.style[isRTL ? 'right' : 'left'] = '-9999px';
+		el.style.opacity = 0;
+		el.value = text;
+		el.setAttribute('readonly', 'true');
 
-		parent.appendChild(input);
-		input.focus().select();
-		input.setSelectionRange(0, input.value.length);
+		parent.appendChild(el);
+		el.focus().select();
+		el.setSelectionRange(0, el.value.length);
 		try {
 			document.execCommand('copy');
 		} catch (e) {
 			console.error(e);
 		}
-		parent.removeChild(input);
+		parent.removeChild(el);
 		return true;
 	}
 
